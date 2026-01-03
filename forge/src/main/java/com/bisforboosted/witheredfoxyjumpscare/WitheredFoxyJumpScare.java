@@ -1,6 +1,9 @@
 package com.bisforboosted.witheredfoxyjumpscare;
 
+import com.bisforboosted.witheredfoxyjumpscare.event.ModEvents;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.RegisterEvent;
 
 @Mod(Constants.MOD_ID)
 public class WitheredFoxyJumpScare {
