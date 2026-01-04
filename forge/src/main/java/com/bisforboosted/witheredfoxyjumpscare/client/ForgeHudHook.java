@@ -11,17 +11,18 @@ import com.bisforboosted.witheredfoxyjumpscare.client.JumpscareHudRenderer;
 
 public class ForgeHudHook {
 
-    static {
-        AddGuiOverlayLayersEvent.BUS.addListener(event -> {
-                ForgeLayeredDraw layeredDraw = event.getLayeredDraw();
-
-                layeredDraw.addWithCondition(ForgeLayeredDraw.VANILLA_ROOT,
-                    JumpscareHudRenderer.WITHERED_FOXY_JUMPSCARE,
-                    JumpscareHudRenderer::render,
-                    JumpscareHudRenderer::getShouldRender);
-        });
+    public static void init() {
+        AddGuiOverlayLayersEvent.BUS.addListener(ForgeHudHook::onRegisterOverlays);
     }
 
-    public static void init() {}
+    private static void onRegisterOverlays(AddGuiOverlayLayersEvent event) {
+        ForgeLayeredDraw layeredDraw = event.getLayeredDraw();
 
+        layeredDraw.addWithCondition(
+                ForgeLayeredDraw.VANILLA_ROOT,
+                JumpscareHudRenderer.WITHERED_FOXY_JUMPSCARE,
+                JumpscareHudRenderer::render,
+                JumpscareHudRenderer::getShouldRender
+        );
+    }
 }
