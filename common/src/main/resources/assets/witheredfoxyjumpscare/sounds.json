@@ -1,0 +1,11 @@
+{
+  "witheredfoxyjumpscare": {
+    "category" : "hostile",
+    "subtitle": "sounds.witheredfoxyjumpscare.witheredfoxyjumpscare",
+    "sounds": [{
+      "name": "witheredfoxyjumpscare:witheredfoxyjumpscare",
+      "stream": false
+    }
+    ]
+  }
+}
