@@ -17,6 +17,9 @@
     "entrypoints": {
         "main": [
             "com.bisforboosted.witheredfoxyjumpscare.WitheredFoxyJumpscare"
+        ],
+        "client": [
+            "com.bisforboosted.witheredfoxyjumpscare.client.FabricHudHook"
         ]
     },
     "mixins": [
