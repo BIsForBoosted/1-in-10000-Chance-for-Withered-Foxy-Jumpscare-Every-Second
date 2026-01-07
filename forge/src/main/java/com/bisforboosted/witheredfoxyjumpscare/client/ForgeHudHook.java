@@ -20,7 +20,7 @@ public class ForgeHudHook {
 
         layeredDraw.addWithCondition(
                 ForgeLayeredDraw.VANILLA_ROOT,
-                JumpscareHudRenderer.WITHERED_FOXY_JUMPSCARE,
+                Constants.WITHERED_FOXY_JUMPSCARE_1,
                 JumpscareHudRenderer::render,
                 JumpscareHudRenderer::getShouldRender
         );
