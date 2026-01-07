@@ -9,9 +9,6 @@ import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.resources.Identifier;
 
 public class JumpscareHudRenderer {
-    public static final Identifier WITHERED_FOXY_JUMPSCARE =
-            Identifier.fromNamespaceAndPath(Constants.MOD_ID, "hud/withered_foxy_jumpscare");
-
     private static boolean shouldRender = false;
     private static long animationStartTime = -1L;
 
