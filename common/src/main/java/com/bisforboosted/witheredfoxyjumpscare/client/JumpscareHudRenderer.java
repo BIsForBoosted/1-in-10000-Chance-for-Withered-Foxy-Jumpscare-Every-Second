@@ -1,6 +1,7 @@
 package com.bisforboosted.witheredfoxyjumpscare.client;
 
 import com.bisforboosted.witheredfoxyjumpscare.Constants;
+import com.bisforboosted.witheredfoxyjumpscare.util.Utils;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -11,18 +12,13 @@ public class JumpscareHudRenderer {
     public static final Identifier WITHERED_FOXY_JUMPSCARE =
             Identifier.fromNamespaceAndPath(Constants.MOD_ID, "hud/withered_foxy_jumpscare");
 
-    private static boolean isActive = false;
+    private static boolean shouldRender = false;
     private static long animationStartTime = -1L;
-
-    private static final int FRAME_COUNT = 13;
-    private static final int TICKS_PER_FRAME = 1;
-    private static final int TOTAL_ANIMATION_TICKS = FRAME_COUNT * TICKS_PER_FRAME;
 
     private JumpscareHudRenderer() {}
 
     public static void setShouldRender(boolean b) {
-        System.out.println("Triggering jumpscare");
-        isActive = b;
+        shouldRender = b;
         if (b) {
             var mc = Minecraft.getInstance();
             if (mc.level != null) {
@@ -35,11 +31,11 @@ public class JumpscareHudRenderer {
     }
 
     public static boolean getShouldRender() {
-        return isActive;
+        return shouldRender;
     }
 
     public static void render(GuiGraphics context, DeltaTracker tickCount) {
-        if (!isActive) return;
+        if (!shouldRender) return;
 
         var mc = Minecraft.getInstance();
         if (mc.level == null) return;
@@ -47,11 +43,11 @@ public class JumpscareHudRenderer {
         long currentTime = mc.level.getGameTime();
         long elapsed = currentTime - animationStartTime;
 
-        System.out.println("Rendering frame at elapsed: " + elapsed + "/" + TOTAL_ANIMATION_TICKS);
+        System.out.println("Rendering frame at elapsed: " + elapsed + "/" + 13);
 
-        if (elapsed > TOTAL_ANIMATION_TICKS) {
+        if (elapsed > 13) {
             System.out.println("Animation complete at elapsed: " + elapsed);
-            isActive = false;
+            shouldRender = false;
             animationStartTime = -1L;
             return;
         }
@@ -59,8 +55,8 @@ public class JumpscareHudRenderer {
         int screenWidth = context.guiWidth();
         int screenHeight = context.guiHeight();
 
-        int imgWidth = 664;
-        int imgHeight = 664;
+        int imgWidth = 336;
+        int imgHeight = 336;
 
         float scale = Math.min((float) screenWidth / imgWidth,
                 (float) screenHeight / imgHeight);
@@ -72,6 +68,6 @@ public class JumpscareHudRenderer {
         int x = (screenWidth - drawWidth) / 2;
         int y = (screenHeight - drawHeight) / 2;
 
-        context.blitSprite(RenderPipelines.GUI_TEXTURED, WITHERED_FOXY_JUMPSCARE, x, y, drawWidth, drawHeight);
+        context.blitSprite(RenderPipelines.GUI_TEXTURED, Utils.getIdentifierByTick(((int) elapsed)), x, y, drawWidth, drawHeight);
     }
 }
