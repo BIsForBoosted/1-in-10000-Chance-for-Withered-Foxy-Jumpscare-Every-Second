@@ -14,6 +14,9 @@ public class ModEvents {
     private static int tickCount = 0;
     private static int jumpscareTicks = 0;
 
+    private static final Random random = new Random();
+    private static int jumpscareOdds = 10000;
+
     public static void onClientTick(ClientTickEvent.Pre event) {
         ClientLevel level = Minecraft.getInstance().level;
 
@@ -32,9 +35,7 @@ public class ModEvents {
         }
 
         if (tickCount == 20) {
-            Random random = new Random();
-
-            int r = random.nextInt(10);
+            int r = random.nextInt(jumpscareOdds);
 
             if (r == 0) {
                 JumpscareHudRenderer.setShouldRender(true);
