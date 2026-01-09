@@ -1,0 +1,57 @@
+name: Create Release After PR Approval
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: [closed]
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: Set up JDK 21
+        uses: actions/setup-java@v2
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: gradle
+      - name: Make Gradle Executable
+        run: chmod +x gradlew
+      - name: Build With Gradle
+        run: ./gradlew :common:build :forge:build :fabric:build :neoforge:build
+      - name: Collect Built JARs
+        run: |
+          mkdir -p release-jars
+          find fabric forge neoforge -maxdepth 4 -type f -path '*/build/libs/*.jar' \
+            \( -iname '*witheredfoxyjumpscare*.jar' -o -iname '*1 in 10000 Withered Foxy Jumpscare Every Second*.jar' \) \
+            ! -iname '*source*.jar' ! -iname '*sources*.jar' \
+            ! -iname '*javadoc*.jar' ! -iname '*javadocs*.jar' \
+            -exec cp '{}' release-jars/ \;
+      - name: Get Minecraft Version
+        id: getMinecraftVersion
+        run: |
+          VERSION=$(./gradlew -q printMinecraftVersion)
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+      - name: Get Mod Version
+        id: getModVersion
+        run: |
+          VERSION=$(./gradlew -q printModVersion)
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.getMinecraftVersion.outputs.version }}-${{ steps.getModVersion.outputs.version }}
+          name: "${{ steps.getMinecraftVersion.outputs.version }}-${{ steps.getModVersion.outputs.version }}"
+          body: |
+            Automated release from PR #${{ github.event.pull_request.number }} for Minecraft version ${{ steps.getMinecraftVersion.outputs.version }} (mod version ${{ steps.getModVersion.outputs.version }})
+
+            **Merged by:** @${{ github.event.pull_request.merged_by.login }}
+            **Commit:** ${{ github.sha }}
+          files: release-jars/*

@@ -4,3 +4,15 @@ plugins {
     // see https://projects.neoforged.net/neoforged/moddevgradle for new versions
     id 'net.neoforged.moddev' version '2.0.123' apply false
 }
+
+tasks.register("printMinecraftVersion") {
+    doLast {
+        println("${minecraft_version}")
+    }
+}
+
+tasks.register("printModVersion") {
+    doLast {
+        println("${project.version}")
+    }
+}
