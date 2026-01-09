@@ -1,6 +1,6 @@
 package com.bisforboosted.witheredfoxyjumpscare;
 
-import com.bisforboosted.witheredfoxyjumpscare.events.JumpscareEvent;
+import com.bisforboosted.witheredfoxyjumpscare.events.FabricJumpscareEvent;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 
@@ -17,7 +17,7 @@ public class WitheredFoxyJumpscare implements ModInitializer {
         Constants.LOG.info("Initializing Common objects for Fabric");
         CommonClass.init();
         Constants.LOG.info("Common objects loaded for Fabric");
-        ClientTickEvents.START_CLIENT_TICK.register(new JumpscareEvent());
+        ClientTickEvents.START_CLIENT_TICK.register(new FabricJumpscareEvent());
 
         Constants.LOG.info("Fabric objects initialized");
     }

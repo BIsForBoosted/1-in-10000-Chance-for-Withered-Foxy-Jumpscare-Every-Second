@@ -2,16 +2,16 @@ package com.bisforboosted.witheredfoxyjumpscare.events;
 
 import com.bisforboosted.witheredfoxyjumpscare.client.JumpscareHudRenderer;
 import com.bisforboosted.witheredfoxyjumpscare.sound.ModSounds;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.player.Player;
-import net.neoforged.neoforge.client.event.ClientTickEvent;
 
 import java.util.Random;
 
-public class ModEvents {
-    public static void onClientTick(ClientTickEvent.Pre event) {
-        JumpscareEvent.commonTickEvent(event);
+public class FabricJumpscareEvent implements ClientTickEvents.StartTick {
+    @Override
+    public void onStartTick(Minecraft minecraft) {
+        JumpscareEvent.commonTickEvent(minecraft);
     }
 }
