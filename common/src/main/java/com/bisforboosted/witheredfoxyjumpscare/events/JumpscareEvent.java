@@ -15,6 +15,10 @@ public class JumpscareEvent {
     private static final Random random = new Random();
     private static int jumpscareOdds = 10000;
 
+    public static void setJumpscareOdds(int odds) {
+        jumpscareOdds = odds;
+    }
+
     public static <T> void commonTickEvent(T event) {
         ClientLevel level = Minecraft.getInstance().level;
 
