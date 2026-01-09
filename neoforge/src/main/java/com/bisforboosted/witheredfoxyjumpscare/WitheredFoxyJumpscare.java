@@ -3,16 +3,9 @@ package com.bisforboosted.witheredfoxyjumpscare;
 
 import com.bisforboosted.witheredfoxyjumpscare.client.NeoForgeHudHook;
 import com.bisforboosted.witheredfoxyjumpscare.events.ModEvents;
-import com.bisforboosted.witheredfoxyjumpscare.sound.ModSounds;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.sounds.SoundEvent;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.registries.DeferredRegister;
-
-import java.lang.ref.SoftReference;
-import java.util.function.Supplier;
 
 @Mod(Constants.MOD_ID)
 public class WitheredFoxyJumpscare {

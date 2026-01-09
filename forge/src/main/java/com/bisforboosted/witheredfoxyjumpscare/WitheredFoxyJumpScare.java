@@ -1,12 +1,8 @@
 package com.bisforboosted.witheredfoxyjumpscare;
 
 import com.bisforboosted.witheredfoxyjumpscare.client.ForgeHudHook;
-import com.bisforboosted.witheredfoxyjumpscare.event.ModEvents;
-
 import net.minecraftforge.client.gui.overlay.ForgeLayeredDraw;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.RegisterEvent;
 
 import java.lang.reflect.Field;
 

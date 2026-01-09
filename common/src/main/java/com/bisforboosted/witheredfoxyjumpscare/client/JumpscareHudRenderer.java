@@ -1,12 +1,10 @@
 package com.bisforboosted.witheredfoxyjumpscare.client;
 
-import com.bisforboosted.witheredfoxyjumpscare.Constants;
 import com.bisforboosted.witheredfoxyjumpscare.util.Utils;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.resources.Identifier;
 
 public class JumpscareHudRenderer {
     private static boolean shouldRender = false;
