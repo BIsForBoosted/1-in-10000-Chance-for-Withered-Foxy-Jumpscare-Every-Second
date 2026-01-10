@@ -36,6 +36,4 @@ public class Constants {
 			Identifier.fromNamespaceAndPath(Constants.MOD_ID, "hud/withered_foxy_jumpscare_12");
 	public static final Identifier WITHERED_FOXY_JUMPSCARE_13 =
 			Identifier.fromNamespaceAndPath(Constants.MOD_ID, "hud/withered_foxy_jumpscare_13");
-	public static final Identifier WITHERED_FOXY_JUMPSCARE_14 =
-			Identifier.fromNamespaceAndPath(Constants.MOD_ID, "hud/withered_foxy_jumpscare_14");
 }

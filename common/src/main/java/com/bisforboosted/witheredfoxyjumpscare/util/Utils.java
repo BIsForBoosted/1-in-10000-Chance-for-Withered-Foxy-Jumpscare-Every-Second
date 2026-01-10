@@ -32,8 +32,6 @@ public class Utils {
                 return Constants.WITHERED_FOXY_JUMPSCARE_12;
             case 12:
                 return Constants.WITHERED_FOXY_JUMPSCARE_13;
-            case 13:
-                return Constants.WITHERED_FOXY_JUMPSCARE_14;
             default:
                 return Constants.WITHERED_FOXY_JUMPSCARE_1;
         }
