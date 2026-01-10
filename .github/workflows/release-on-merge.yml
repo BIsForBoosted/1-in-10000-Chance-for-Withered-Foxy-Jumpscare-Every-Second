@@ -21,7 +21,6 @@ jobs:
         with:
           java-version: '21'
           distribution: 'temurin'
-          cache: gradle
       - name: Make Gradle Executable
         run: chmod +x gradlew
       - name: Build With Gradle
