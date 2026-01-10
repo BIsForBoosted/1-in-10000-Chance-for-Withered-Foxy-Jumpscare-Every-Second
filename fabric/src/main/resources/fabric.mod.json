@@ -15,8 +15,9 @@
     "icon": "${mod_id}.png",
     "environment": "*",
     "entrypoints": {
-        "main": [
-            "com.bisforboosted.witheredfoxyjumpscare.WitheredFoxyJumpscare"
+        "client": [
+            "com.bisforboosted.witheredfoxyjumpscare.WitheredFoxyJumpscare",
+            "com.bisforboosted.witheredfoxyjumpscare.client.FabricHudHook"
         ]
     },
     "mixins": [
