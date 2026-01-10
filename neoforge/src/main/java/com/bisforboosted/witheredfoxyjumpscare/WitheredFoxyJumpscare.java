@@ -2,6 +2,7 @@ package com.bisforboosted.witheredfoxyjumpscare;
 
 
 import com.bisforboosted.witheredfoxyjumpscare.client.NeoForgeHudHook;
+import com.bisforboosted.witheredfoxyjumpscare.commands.ClientCommands;
 import com.bisforboosted.witheredfoxyjumpscare.events.ModEvents;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
@@ -22,6 +23,7 @@ public class WitheredFoxyJumpscare {
         Constants.LOG.info("Common objects loaded for NeoForge");
         NeoForge.EVENT_BUS.addListener(ModEvents::onClientTick);
         eventBus.addListener(NeoForgeHudHook::onRegisterOverlays);
+        NeoForge.EVENT_BUS.addListener(ClientCommands::onRegisterCommands);
         Constants.LOG.info("NeoForge objects initialized");
     }
 }
