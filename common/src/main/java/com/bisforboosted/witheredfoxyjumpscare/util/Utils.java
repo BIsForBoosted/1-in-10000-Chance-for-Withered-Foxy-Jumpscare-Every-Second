@@ -1,10 +1,11 @@
 package com.bisforboosted.witheredfoxyjumpscare.util;
 
 import com.bisforboosted.witheredfoxyjumpscare.Constants;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
+
 
 public class Utils {
-    public static Identifier getIdentifierByTick(int tick) {
+    public static ResourceLocation getIdentifierByTick(int tick) {
         switch (tick) {
             case 0:
                 return Constants.WITHERED_FOXY_JUMPSCARE_1;
