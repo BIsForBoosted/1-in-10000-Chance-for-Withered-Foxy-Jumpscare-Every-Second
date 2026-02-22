@@ -1,10 +1,8 @@
 package com.bisforboosted.witheredfoxyjumpscare.client;
 
 import com.bisforboosted.witheredfoxyjumpscare.util.Utils;
-import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.renderer.RenderPipelines;
 
 public class JumpscareHudRenderer {
     private static boolean shouldRender = false;
@@ -28,7 +26,7 @@ public class JumpscareHudRenderer {
         return shouldRender;
     }
 
-    public static void render(GuiGraphics context, DeltaTracker tickCount) {
+    public static void render(GuiGraphics context) {
         if (!shouldRender) return;
 
         var mc = Minecraft.getInstance();
@@ -43,6 +41,9 @@ public class JumpscareHudRenderer {
             return;
         }
 
-        context.blitSprite(RenderPipelines.GUI_TEXTURED, Utils.getIdentifierByTick(((int) elapsed)), 0, 0, context.guiWidth(), context.guiHeight());
+        int width = mc.getWindow().getGuiScaledWidth();
+        int height = mc.getWindow().getGuiScaledHeight();
+
+        context.blitSprite(Utils.getIdentifierByTick(((int) elapsed)), 0, 0, width, height);
     }
 }
