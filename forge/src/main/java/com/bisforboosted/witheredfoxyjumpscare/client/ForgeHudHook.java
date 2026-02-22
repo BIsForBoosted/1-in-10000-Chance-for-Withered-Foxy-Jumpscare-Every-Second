@@ -1,23 +1,18 @@
 package com.bisforboosted.witheredfoxyjumpscare.client;
 
-import com.bisforboosted.witheredfoxyjumpscare.Constants;
-import net.minecraftforge.client.event.AddGuiOverlayLayersEvent;
-import net.minecraftforge.client.gui.overlay.ForgeLayeredDraw;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.RenderGuiOverlayEvent;
+import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
 public class ForgeHudHook {
 
-    public static void init() {
-        AddGuiOverlayLayersEvent.BUS.addListener(ForgeHudHook::onRegisterOverlays);
-    }
-
-    private static void onRegisterOverlays(AddGuiOverlayLayersEvent event) {
-        ForgeLayeredDraw layeredDraw = event.getLayeredDraw();
-
-        layeredDraw.addWithCondition(
-                ForgeLayeredDraw.VANILLA_ROOT,
-                Constants.WITHERED_FOXY_JUMPSCARE_1,
-                JumpscareHudRenderer::render,
-                JumpscareHudRenderer::getShouldRender
-        );
+    @SubscribeEvent
+    public static void onRenderOverlay(RenderGuiOverlayEvent.Post event) {
+        if (event.getOverlay() == VanillaGuiOverlay.HOTBAR.type()) {
+            JumpscareHudRenderer.render(event.getGuiGraphics());
+        }
     }
 }
