@@ -11,3 +11,6 @@ Based on [the Terraria mod](https://steamcommunity.com/sharedfiles/filedetails/?
 - NeoForge
 - Forge
 
+### 1.20.4
+- Fabric
+- Forge
