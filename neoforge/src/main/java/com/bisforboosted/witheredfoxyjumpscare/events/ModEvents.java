@@ -1,9 +1,16 @@
 package com.bisforboosted.witheredfoxyjumpscare.events;
 
-import net.neoforged.neoforge.client.event.ClientTickEvent;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.event.TickEvent;
 
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
 public class ModEvents {
-    public static void onClientTick(ClientTickEvent.Pre event) {
-        JumpscareEvent.commonTickEvent(event);
+    @SubscribeEvent
+    public static void onClientTick(TickEvent.ClientTickEvent event) {
+        if (event.phase == TickEvent.Phase.START) {
+            JumpscareEvent.commonTickEvent(event);
+        }
     }
 }

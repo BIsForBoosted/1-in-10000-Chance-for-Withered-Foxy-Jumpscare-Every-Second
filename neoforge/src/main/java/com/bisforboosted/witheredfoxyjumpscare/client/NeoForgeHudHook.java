@@ -1,11 +1,16 @@
 package com.bisforboosted.witheredfoxyjumpscare.client;
 
 import com.bisforboosted.witheredfoxyjumpscare.Constants;
-import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
+import net.neoforged.neoforge.client.event.RegisterGuiOverlaysEvent;
+import net.neoforged.neoforge.client.gui.overlay.IGuiOverlay;
 
 public class NeoForgeHudHook {
 
-    public static void onRegisterOverlays(RegisterGuiLayersEvent event) {
-        event.registerAboveAll(Constants.WITHERED_FOXY_JUMPSCARE_1, JumpscareHudRenderer::render);
+    private static final IGuiOverlay JUMPSCARE_LAYER = (extendedGui, guiGraphics, partialTick, width, height) -> {
+        JumpscareHudRenderer.render(guiGraphics);
+    };
+
+    public static void onRegisterOverlays(RegisterGuiOverlaysEvent event) {
+        event.registerAboveAll(Constants.WITHERED_FOXY_JUMPSCARE_1, JUMPSCARE_LAYER);
     }
 }
