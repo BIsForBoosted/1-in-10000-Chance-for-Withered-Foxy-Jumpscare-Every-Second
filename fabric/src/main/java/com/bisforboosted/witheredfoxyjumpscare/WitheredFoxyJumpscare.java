@@ -4,7 +4,7 @@ import com.bisforboosted.witheredfoxyjumpscare.commands.CommonCommands;
 import com.bisforboosted.witheredfoxyjumpscare.events.FabricJumpscareEvent;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.client.command.v2.ClientCommandManager;
+import net.fabricmc.fabric.api.client.command.v2.ClientCommands;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.network.chat.Component;
@@ -19,8 +19,8 @@ public class WitheredFoxyJumpscare implements ClientModInitializer {
         ClientTickEvents.START_CLIENT_TICK.register(new FabricJumpscareEvent());
 
         ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
-            dispatcher.register(ClientCommandManager.literal("setjumpscareodds")
-                .then(ClientCommandManager.argument("odds", IntegerArgumentType.integer(1))
+            dispatcher.register(ClientCommands.literal("setjumpscareodds")
+                .then(ClientCommands.argument("odds", IntegerArgumentType.integer(1))
                     .executes(context -> {
                         CommonCommands.CommandOutput output = CommonCommands.changeJumpscareOdds(context);
                         int result = output.result();
