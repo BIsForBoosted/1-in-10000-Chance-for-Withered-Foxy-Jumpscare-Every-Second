@@ -3,7 +3,7 @@ package com.bisforboosted.witheredfoxyjumpscare.client;
 import com.bisforboosted.witheredfoxyjumpscare.util.Utils;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.renderer.RenderPipelines;
 
 public class JumpscareHudRenderer {
@@ -28,7 +28,7 @@ public class JumpscareHudRenderer {
         return shouldRender;
     }
 
-    public static void render(GuiGraphics context, DeltaTracker tickCount) {
+    public static void render(GuiGraphicsExtractor context, DeltaTracker tickCount) {
         if (!shouldRender) return;
 
         var mc = Minecraft.getInstance();
