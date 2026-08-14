@@ -6,7 +6,7 @@ Use `/setjumpscareodds [X]` to set the jumpscare odds to 1/X
 Based on [the Terraria mod](https://steamcommunity.com/sharedfiles/filedetails/?id=3481943642) by [yonmaruyon](https://steamcommunity.com/id/yonmaruyon)
 
 ## Versions
-### 26.1
+### 26.x
 - Fabric
 - NeoForge
 
